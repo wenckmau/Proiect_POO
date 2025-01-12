@@ -3,7 +3,9 @@
     public class Mechanic : User
     {
         public Mechanic(string codUnic, string nume, string prenume, string email, string parola)
-            : base(codUnic, nume, prenume, email, parola) { }
+            : base(codUnic, nume, prenume, email, parola)
+        {
+        }
 
         public CerereRezolvare PreluareCerere()
         {
@@ -28,4 +30,15 @@
 
         }
     }
+
+
+    public void RezolvaProblema(CerereRezolvare cerere)
+    {
+        if (cerere != null)
+        {
+            cerere.Status = RequestStatus.Finalizat;
+            Console.WriteLine($"Cererea cu Cod Unic {cerere.CodUnic} a fost rezolvată.");
+        }
+    }
+
 }
