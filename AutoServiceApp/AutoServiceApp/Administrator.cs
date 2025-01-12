@@ -5,9 +5,20 @@
         public Administrator(string codUnic, string nume, string prenume, string email, string parola)
             : base(codUnic, nume, prenume, email, parola) { }
 
-        public void VizualizareCereri()
+        public void VizualizareCereri(List<CerereRezolvare> cereri)
         {
 
+            foreach (var cerere in cereri)
+            {
+                Console.WriteLine($"Cod: {cerere.CodUnic}, Nume Client: {cerere.NumeClient}, Status: {cerere.Status}");
+            }
+        }
+        public void AdaugaCerere(List<CerereRezolvare> cereri, string nume, string numarMasina, string descriere)
+        {
+            var codUnic = Guid.NewGuid().ToString();
+            var cerere = new CerereRezolvare(codUnic, nume, numarMasina, descriere, RequestStatus.InPreluare);
+            cereri.Add(cerere);
+            Console.WriteLine($"Cererea a fost adăugată cu succes. Cod Unic: {codUnic}");
         }
         public void VizualizareComenziPiese(List<CererePiese> comenziPiese)
         {
