@@ -13,13 +13,7 @@
                 Console.WriteLine($"Cod: {cerere.CodUnic}, Nume Client: {cerere.NumeClient}, Status: {cerere.Status}");
             }
         }
-        public void AdaugaCerere(List<CerereRezolvare> cereri, string nume, string numarMasina, string descriere)
-        {
-            var codUnic = Guid.NewGuid().ToString();
-            var cerere = new CerereRezolvare(codUnic, nume, numarMasina, descriere, RequestStatus.InPreluare);
-            cereri.Add(cerere);
-            Console.WriteLine($"Cererea a fost adăugată cu succes. Cod Unic: {codUnic}");
-        }
+       
         public void VizualizareComenziPiese(List<CererePiese> comenziPiese)
         {
             foreach (var comanda in comenziPiese)
@@ -42,9 +36,14 @@
             }
         }
 
-        public void AdaugaCerere()
-        {
-
-        }
+      
+            public void AdaugaCerere(List<CerereRezolvare> cereri, string nume, string numarMasina, string descriere)
+            {
+                var codUnic = Guid.NewGuid().ToString();
+                var cerere = new CerereRezolvare(codUnic, nume, numarMasina, descriere, RequestStatus.InPreluare);
+                cereri.Add(cerere);
+                Console.WriteLine($"Cererea a fost adăugată cu succes. Cod Unic: {codUnic}");
+            }
+        
     }
 }
