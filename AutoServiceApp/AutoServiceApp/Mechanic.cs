@@ -7,9 +7,15 @@
         {
         }
 
-        public CerereRezolvare PreluareCerere()
+        public CerereRezolvare PreluareCerere(List<CerereRezolvare> cereri)
         {
-
+            var cerere = cereri.FirstOrDefault(c => c.Status == RequestStatus.InPreluare);
+            if (cerere != null)
+            {
+                cerere.Status = RequestStatus.Investigare;
+                Console.WriteLine($"Cererea cu Cod Unic {cerere.CodUnic} a fost preluată pentru investigare.");
+            }
+            return cerere;
         }
 
         public bool InvestigareProblema()
@@ -24,21 +30,18 @@
             Console.WriteLine($"Cererea de piese cu AVB {avb} a fost creată.");
         }
 
-
-        public void RezolvaProblema()
+        public void RezolvaProblema(CerereRezolvare cerere)
         {
-
+            if (cerere != null)
+            {
+                cerere.Status = RequestStatus.Finalizat;
+                Console.WriteLine($"Cererea cu Cod Unic {cerere.CodUnic} a fost rezolvată.");
+            }
         }
+       
     }
 
 
-    public void RezolvaProblema(CerereRezolvare cerere)
-    {
-        if (cerere != null)
-        {
-            cerere.Status = RequestStatus.Finalizat;
-            Console.WriteLine($"Cererea cu Cod Unic {cerere.CodUnic} a fost rezolvată.");
-        }
-    }
+  
 
 }
