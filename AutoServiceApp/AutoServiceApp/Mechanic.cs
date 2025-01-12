@@ -18,8 +18,15 @@
             return cerere;
         }
 
-        public bool InvestigareProblema()
-        {
+        public bool InvestigareProblema(CerereRezolvare cerere)
+        { 
+            if ( cerere != null)
+                     {
+                         cerere.Status = RequestStatus.Investigare;
+                         Console.WriteLine($"Cererea cu Cod Unic {cerere.CodUnic} este în investigare.");
+                         return true;
+                     }
+                     return false;
 
         }
 
@@ -29,7 +36,7 @@
             comenziPiese.Add(comanda);
             Console.WriteLine($"Cererea de piese cu AVB {avb} a fost creată.");
         }
-
+        
         public void RezolvaProblema(CerereRezolvare cerere)
         {
             if (cerere != null)
