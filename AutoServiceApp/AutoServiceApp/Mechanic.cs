@@ -15,10 +15,13 @@
 
         }
 
-        public void CreeazaCererePiese()
+        public void CreeazaCererePiese(List<CererePiese> comenziPiese, int avb, string detalii)
         {
-
+            var comanda = new CererePiese(avb, this.Nume, detalii, PartOrderStatus.InAsteptare);
+            comenziPiese.Add(comanda);
+            Console.WriteLine($"Cererea de piese cu AVB {avb} a fost creată.");
         }
+
 
         public void RezolvaProblema()
         {
