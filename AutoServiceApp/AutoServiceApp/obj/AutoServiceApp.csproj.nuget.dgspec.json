@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {}
+    "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {
+    "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
+        "projectUniqueName": "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
         "projectName": "AutoServiceApp",
-        "projectPath": "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
-        "packagesPath": "C:\\Users\\mikyb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\obj\\",
+        "projectPath": "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
+        "packagesPath": "C:\\Users\\madia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mikyb\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\madia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\mikyb\\.dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
