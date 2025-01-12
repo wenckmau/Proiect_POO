@@ -9,15 +9,26 @@
         {
 
         }
-
-        public void VizualizareComenziPiese()
+        public void VizualizareComenziPiese(List<CererePiese> comenziPiese)
         {
-
+            foreach (var comanda in comenziPiese)
+            {
+                Console.WriteLine($"AVB: {comanda.Avb}, Nume Mecanic: {comanda.NumeMecanic}, Status: {comanda.Status}");
+            }
         }
 
-        public void FinalizareComandaPiese()
+        public void FinalizareComandaPiese(int avb, List<CererePiese> comenziPiese)
         {
-
+            var comanda = comenziPiese.FirstOrDefault(c => c.Avb == avb);
+            if (comanda != null)
+            {
+                comanda.Status = PartOrderStatus.Finalizat;
+                Console.WriteLine($"Comanda cu AVB {avb} a fost finalizată.");
+            }
+            else
+            {
+                Console.WriteLine($"Comanda cu AVB {avb} nu a fost găsită.");
+            }
         }
 
         public void AdaugaCerere()
