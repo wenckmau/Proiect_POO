@@ -1,5 +1,22 @@
 {
-  "Users": [],
+  "Users": [
+    {
+      "CodUnic": "1",
+      "Nume": "Test",
+      "Prenume": "Test",
+      "Email": "Test",
+      "Parola": "Test",
+      "Role": "Admin"
+    },
+    {
+      "CodUnic": "1",
+      "Nume": "TEST",
+      "Prenume": "TEST",
+      "Email": "test2",
+      "Parola": "test2",
+      "Role": "Mechanic"
+    }
+  ],
   "Cereri": [],
   "PartOrders": []
 }

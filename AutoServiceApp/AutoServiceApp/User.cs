@@ -19,6 +19,8 @@
         public abstract void AdaugaComandaPiese(AutoService autoService, User utilizatorAutentificat);
         public abstract void VizualizeazaComenziPiese(AutoService autoService, User utilizatorAutentificat);
         public abstract void FinalizeazaComandaPiese(AutoService autoService, User utilizatorAutentificat);
+        public abstract void LogIn(AutoService autoService);
+        public abstract void AddUser(AutoService autoService);
 
         protected User(string codUnic, string nume, string prenume, string email, string parola, UserRole role)
         {
