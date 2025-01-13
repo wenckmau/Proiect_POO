@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace AutoServiceApp
 {
-    public class RepoManager
+    public class StateManager
     {
         private JsonSerializerOptions GetJsonSerializerOptions()
         {
