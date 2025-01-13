@@ -14,7 +14,11 @@
         public string Email { get=>_Email; set=>_Email=value; }
         public string Parola { get=>_Parola; set=>_Parola=value; }
         public UserRole Role { get=>_userRole; set=>_userRole=value; }
-      
+        public abstract void AdaugaCerere(AutoService autoService, User utilizatorAutentificat);
+        public abstract void VizualizeazaCereri(AutoService autoService, User utilizatorAutentificat);
+        public abstract void AdaugaComandaPiese(AutoService autoService, User utilizatorAutentificat);
+        public abstract void VizualizeazaComenziPiese(AutoService autoService, User utilizatorAutentificat);
+        public abstract void FinalizeazaComandaPiese(AutoService autoService, User utilizatorAutentificat);
 
         protected User(string codUnic, string nume, string prenume, string email, string parola, UserRole role)
         {
