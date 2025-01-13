@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {}
+    "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {
+    "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
+        "projectUniqueName": "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
         "projectName": "AutoServiceApp",
-        "projectPath": "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
-        "packagesPath": "C:\\Users\\madia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\madia\\Desktop\\Folder nou\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\obj\\",
+        "projectPath": "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
+        "packagesPath": "C:\\Users\\40729\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\madia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\40729\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +36,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         }
       },
       "frameworks": {
@@ -55,12 +53,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.8, 8.0.8]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

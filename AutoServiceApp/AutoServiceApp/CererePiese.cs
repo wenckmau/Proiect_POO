@@ -9,10 +9,15 @@
 
     public class CererePiese
     {
-        public int Avb { get; set; }
-        public string NumeMecanic { get; set; }
-        public string DetaliiPiese { get; set; }
-        public PartOrderStatus Status { get; set; }
+        private int _avb;
+        private string _numeMecanic;
+        private string _detaliiPiese;
+        private PartOrderStatus _status;
+        
+        public int Avb { get=>_avb; set=>_avb=value; }
+        public string NumeMecanic { get=>_numeMecanic; set=>_numeMecanic=value; }
+        public string DetaliiPiese { get=>_detaliiPiese; set=>_detaliiPiese=value; }
+        public PartOrderStatus Status { get=>_status; set=>_status=value; }
 
         public CererePiese(int avb, string numeMecanic, string detaliiPiese, PartOrderStatus status)
         {

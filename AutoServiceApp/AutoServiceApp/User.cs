@@ -2,11 +2,17 @@
 {
     public abstract class User
     {
-        public string CodUnic { get; set; }
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
-        public string Email { get; set; }
-        public string Parola { get; set; }
+        private string _CodUnic;
+        private string _Nume;
+        private string _Prenume;
+        private string _Email;
+        private string _Parola;
+        
+        public string CodUnic { get=> _CodUnic; set=>_CodUnic=value; }
+        public string Nume { get=>_Nume; set=>_Nume=value; }
+        public string Prenume { get=>_Prenume; set=>_Prenume=value; }
+        public string Email { get=>_Email; set=>_Email=value; }
+        public string Parola { get=>_Parola; set=>_Parola=value; }
 
         protected User(string codUnic, string nume, string prenume, string email, string parola)
         {

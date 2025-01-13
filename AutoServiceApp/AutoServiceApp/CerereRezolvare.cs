@@ -10,11 +10,16 @@
 
     public class CerereRezolvare
     {
-        public string CodUnic { get; set; }
-        public string NumeClient { get; set; }
-        public string NumarMasina { get; set; }
-        public string DescriereProblema { get; set; }
-        public RequestStatus Status { get; set; }
+        private string _codUnic;
+        private string _numeClient;
+        private string _numarMasina;
+        private string _descriereProblema;
+        private RequestStatus _status;
+        public string CodUnic { get=>_codUnic; set=>_codUnic=value; }
+        public string NumeClient { get=>_numeClient; set=>_numeClient=value; }
+        public string NumarMasina { get=>_numarMasina; set=>_numarMasina=value; }
+        public string DescriereProblema { get=>_descriereProblema; set=>_descriereProblema=value; }
+        public RequestStatus Status { get=>_status; set=>_status=value; }
 
         public CerereRezolvare(string codUnic, string numeClient, string numarMasina, string descriereProblema, RequestStatus status)
         {
