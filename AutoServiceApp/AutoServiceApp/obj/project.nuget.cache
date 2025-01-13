@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lOBLHwTvlE4=",
+  "dgSpecHash": "7GMp1cFuqAE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\40729\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.8\\microsoft.netcore.app.ref.8.0.8.nupkg.sha512",
-    "C:\\Users\\40729\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.8\\microsoft.windowsdesktop.app.ref.8.0.8.nupkg.sha512",
-    "C:\\Users\\40729\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.8\\microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512",
-    "C:\\Users\\40729\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.8\\microsoft.netcore.app.host.win-x64.8.0.8.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
