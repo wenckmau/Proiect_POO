@@ -3,47 +3,62 @@
     public class Administrator : User
     {
         public Administrator(string codUnic, string nume, string prenume, string email, string parola)
-            : base(codUnic, nume, prenume, email, parola) { }
+            : base(codUnic, nume, prenume, email, parola, UserRole.Admin) { }
 
-        public void VizualizareCereri(List<CerereRezolvare> cereri)
+     public override void AdaugaCerere(AutoService autoService, User utilizatorAutentificat)
         {
+            Console.Write("Introduceți numele clientului: ");
+            var numeClient = Console.ReadLine();
+            Console.Write("Introduceți numărul mașinii: ");
+            var numarMasina = Console.ReadLine();
+            Console.Write("Introduceți descrierea problemei: ");
+            var descriereProblema = Console.ReadLine();
 
+            var cerere = new CerereRezolvare(Guid.NewGuid().ToString(), numeClient, numarMasina, descriereProblema, RequestStatus.InPreluare);
+
+            autoService.AddRequest(cerere, utilizatorAutentificat);
+            Console.WriteLine("Cerere adăugată cu succes.");
+        }
+
+        public override void VizualizeazaCereri(AutoService autoService, User utilizatorAutentificat)
+        {
+            var cereri = autoService.GetCereri();
             foreach (var cerere in cereri)
             {
-                Console.WriteLine($"Cod: {cerere.CodUnic}, Nume Client: {cerere.NumeClient}, Status: {cerere.Status}");
-            }
-        }
-       
-        public void VizualizareComenziPiese(List<CererePiese> comenziPiese)
-        {
-            foreach (var comanda in comenziPiese)
-            {
-                Console.WriteLine($"AVB: {comanda.Avb}, Nume Mecanic: {comanda.NumeMecanic}, Status: {comanda.Status}");
+                Console.WriteLine($"Cerere: {cerere.CodUnic}, Status: {cerere.Status}, Client: {cerere.NumeClient}");
             }
         }
 
-        public void FinalizareComandaPiese(int avb, List<CererePiese> comenziPiese)
+        public override void AdaugaComandaPiese(AutoService autoService, User utilizatorAutentificat)
         {
-            var comanda = comenziPiese.FirstOrDefault(c => c.Avb == avb);
+            Console.WriteLine("Doar mecanicii pot adăuga comenzi de piese.");
+        }
+
+        public override void VizualizeazaComenziPiese(AutoService autoService, User utilizatorAutentificat)
+        {
+            var comenziPiese = autoService.GetPartOrders();
+            foreach (var comanda in comenziPiese)
+            {
+                Console.WriteLine($"Comanda: {comanda.Avb}, Status: {comanda.Status}, Detalii: {comanda.DetaliiPiese}");
+            }
+        }
+
+        public override void FinalizeazaComandaPiese(AutoService autoService, User utilizatorAutentificat)
+        {
+            Console.Write("Introduceți ID-ul comenzii de piese: ");
+            var idComandaPiese = int.Parse(Console.ReadLine());
+
+            var comanda = autoService.GetPartOrders().FirstOrDefault(c => c.Avb == idComandaPiese);
             if (comanda != null)
             {
                 comanda.Status = PartOrderStatus.Finalizat;
-                Console.WriteLine($"Comanda cu AVB {avb} a fost finalizată.");
+                Console.WriteLine("Comanda de piese finalizată cu succes.");
             }
             else
             {
-                Console.WriteLine($"Comanda cu AVB {avb} nu a fost găsită.");
+                Console.WriteLine("Comanda de piese nu a fost găsită.");
             }
         }
-
-      
-            public void AdaugaCerere(List<CerereRezolvare> cereri, string nume, string numarMasina, string descriere)
-            {
-                var codUnic = Guid.NewGuid().ToString();
-                var cerere = new CerereRezolvare(codUnic, nume, numarMasina, descriere, RequestStatus.InPreluare);
-                cereri.Add(cerere);
-                Console.WriteLine($"Cererea a fost adăugată cu succes. Cod Unic: {codUnic}");
-            }
         
     }
 }
