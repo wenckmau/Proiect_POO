@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {}
+    "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {
+    "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
+        "projectUniqueName": "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
         "projectName": "AutoServiceApp",
-        "projectPath": "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
-        "packagesPath": "C:\\Users\\mikyb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mikyb\\Desktop\\New folder (3)\\AutoServiceApp\\AutoServiceApp\\obj\\",
+        "projectPath": "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\AutoServiceApp.csproj",
+        "packagesPath": "C:\\Users\\40729\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\40729\\Desktop\\Proiect_POO\\AutoServiceApp\\AutoServiceApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mikyb\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\40729\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,12 +53,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\mikyb\\.dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

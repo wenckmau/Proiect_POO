@@ -59,6 +59,40 @@
                 Console.WriteLine("Comanda de piese nu a fost găsită.");
             }
         }
+        public override void LogIn(AutoService autoService)
+        {
+            Console.Write("Introduceti email: ");
+            var email = Console.ReadLine();
+            Console.Write("Introduceti parola: ");
+            var password = Console.ReadLine();
+
+            var user = autoService.Authenticate(email, password);
+            if (user != null)
+            {
+                Console.WriteLine("Autentificare reușită.");
+            }
+            else
+            {
+                Console.WriteLine("Autentificare eșuată.");
+            }
+        }
+        public override void AddUser(AutoService autoService)
+        {
+            Console.Write("Introduceti codul unic: ");
+            var code = Console.ReadLine();
+            Console.Write("Introduceti prenumele: ");
+            var firstName = Console.ReadLine();
+            Console.Write("Introduceti numele: ");
+            var lastName = Console.ReadLine();
+            Console.Write("Introduceti email: ");
+            var email = Console.ReadLine();
+            Console.Write("Introduceti parola: ");
+            var password = Console.ReadLine();
+
+            var admin = new Administrator(code, firstName, lastName, email, password);
+            autoService.AddUser(admin);
+            Console.WriteLine("Administrator adăugat cu succes.");
+        }
         
     }
 }
