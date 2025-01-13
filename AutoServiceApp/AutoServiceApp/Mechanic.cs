@@ -3,7 +3,7 @@
     public class Mechanic : User
     {
         public Mechanic(string codUnic, string nume, string prenume, string email, string parola)
-            : base(codUnic, nume, prenume, email, parola)
+            : base(codUnic, nume, prenume, email, parola, UserRole.Mechanic)
         {
         }
 

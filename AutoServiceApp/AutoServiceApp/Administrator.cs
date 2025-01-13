@@ -3,7 +3,7 @@
     public class Administrator : User
     {
         public Administrator(string codUnic, string nume, string prenume, string email, string parola)
-            : base(codUnic, nume, prenume, email, parola) { }
+            : base(codUnic, nume, prenume, email, parola, UserRole.Admin) { }
 
         public void VizualizareCereri(List<CerereRezolvare> cereri)
         {
