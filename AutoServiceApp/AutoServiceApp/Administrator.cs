@@ -61,19 +61,14 @@
         }
         public override void LogIn(AutoService autoService)
         {
-            Console.Write("Introduceti email: ");
-            var email = Console.ReadLine();
-            Console.Write("Introduceti parola: ");
-            var password = Console.ReadLine();
-
-            var user = autoService.Authenticate(email, password);
+            var user = autoService.Authenticate(this.Email, this.Parola);
             if (user != null)
             {
-                Console.WriteLine("Autentificare reușită.");
+                Console.WriteLine("Authentication successful.");
             }
             else
             {
-                Console.WriteLine("Autentificare eșuată.");
+                Console.WriteLine("Authentication failed.");
             }
         }
         public override void AddUser(AutoService autoService)

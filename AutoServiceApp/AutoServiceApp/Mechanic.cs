@@ -131,5 +131,36 @@ namespace AutoServiceApp
                 Console.WriteLine("Part order not found.");
             }
         }
+        
+        public override void LogIn(AutoService autoService)
+        {
+            var user = autoService.Authenticate(this.Email, this.Parola);
+            if (user != null)
+            {
+                Console.WriteLine("Authentication successful.");
+            }
+            else
+            {
+                Console.WriteLine("Authentication failed.");
+            }
+        }
+
+        public override void AddUser(AutoService autoService)
+        {
+            Console.Write("Introduceți codul unic: ");
+            var code = Console.ReadLine();
+            Console.Write("Introduceți prenumele: ");
+            var firstName = Console.ReadLine();
+            Console.Write("Introduceți numele de familie: ");
+            var lastName = Console.ReadLine();
+            Console.Write("Introduceți emailul: ");
+            var email = Console.ReadLine();
+            Console.Write("Introduceți parola: ");
+            var password = Console.ReadLine();
+
+            var mechanic = new Mechanic(code, firstName, lastName, email, password);
+            autoService.AddUser(mechanic);
+            Console.WriteLine("Mecanic adăugat cu succes.");
+        }
     }
 }

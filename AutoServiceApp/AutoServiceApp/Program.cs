@@ -19,26 +19,37 @@ namespace AutoServiceApp
             {
                 if (authenticatedUser == null)
                 {
-                    Console.WriteLine("\nAlegeti o optiune:");
-                    Console.WriteLine("1. Log in");
-                    Console.WriteLine("2. Adaugare user");
-                    Console.WriteLine("3. Exit");
+                    Console.WriteLine("\nSelectați o opțiune:");
+                    Console.WriteLine("1. Login In");
+                    Console.WriteLine("2. Adăugați utilizator");
+                    Console.WriteLine("3. Ieșire");
 
-                    var alegere = Console.ReadLine();
+                    var choice = Console.ReadLine();
 
-                    switch (alegere)
+                    switch (choice)
                     {
                         case "1":
-                            authenticatedUser = LogIn(autoService);
+                            Console.Write("Introduceți Email: ");
+                            var email = Console.ReadLine();
+                            Console.Write("Introduceți Parola: ");
+                            var password = Console.ReadLine();
+                            authenticatedUser = autoService.Authenticate(email, password);
+                            if (authenticatedUser == null)
+                            {
+                                Console.WriteLine("Autentificarea a eșuat");
+                            }
                             break;
                         case "2":
-                            AddUser(autoService);
+                            Console.Write("Introduceți rol (admin/mecanic): ");
+                            var role = Console.ReadLine().ToLower();
+                            User user = role == "admin" ? new Administrator("code", "firstName", "lastName", "email", "password") : (User)new Mechanic("code", "firstName", "lastName", "email", "password");
+                            user.AddUser(autoService);
                             break;
                         case "3":
                             exit = true;
                             break;
                         default:
-                            Console.WriteLine("Alegere invalida. Incercati din nou.");
+                            Console.WriteLine("Opțiune invalidă.");
                             break;
                     }
                 }
@@ -46,18 +57,18 @@ namespace AutoServiceApp
                 {
                     if (authenticatedUser is Administrator)
                     {
-                        Console.WriteLine("\nAlegeti o optiune:");
-                        Console.WriteLine("1. Adaugati o noua cerere");
-                        Console.WriteLine("2. Toate cererile");
-                        Console.WriteLine("3. Vizualizare parti auto");
-                        Console.WriteLine("4. Finalizare comanda de piese");
-                        Console.WriteLine("5. Salvare ");
-                        Console.WriteLine("6. Log out");
-                        Console.WriteLine("7. Exit");
+                        Console.WriteLine("\nSelectați o opțiune:");
+                        Console.WriteLine("1. Adăugați o nouă cerere");
+                        Console.WriteLine("2. Vizualizați toate cererile");
+                        Console.WriteLine("3. Vizualizați toate comenzile de piese");
+                        Console.WriteLine("4. Finalizați o comandă de piese");
+                        Console.WriteLine("5. Salvați starea");
+                        Console.WriteLine("6. Log Out");
+                        Console.WriteLine("7. Ieșire");
 
-                        var alegere = Console.ReadLine();
+                        var choice = Console.ReadLine();
 
-                        switch (alegere)
+                        switch (choice)
                         {
                             case "1":
                                 ((Administrator)authenticatedUser).AdaugaCerere(autoService, authenticatedUser);
@@ -81,25 +92,25 @@ namespace AutoServiceApp
                                 exit = true;
                                 break;
                             default:
-                                Console.WriteLine("Optiune invalida. Incercati din nou!");
+                                Console.WriteLine("Opțiune invalidă. Vă rugăm să încercați din nou.");
                                 break;
                         }
                     }
                     else if (authenticatedUser is Mechanic)
                     {
-                        Console.WriteLine("\nAlegeti o optiune:");
-                        Console.WriteLine("1. Luati urmatoarea cerere");
-                        Console.WriteLine("2. Investigare problema");
-                        Console.WriteLine("3. Adaugare comanda de piese");
-                        Console.WriteLine("4. Rezolvati problema");
-                        Console.WriteLine("5. Vizualizare comenzi de piese");
-                        Console.WriteLine("6. Salvare");
-                        Console.WriteLine("7. Log out");
-                        Console.WriteLine("8. Exit");
+                        Console.WriteLine("\nSelectați o opțiune:");
+                        Console.WriteLine("1. Preluați următoarea cerere");
+                        Console.WriteLine("2. Investigați problema");
+                        Console.WriteLine("3. Adăugați o comandă de piese");
+                        Console.WriteLine("4. Rezolvați problema");
+                        Console.WriteLine("5. Vizualizați toate comenzile de piese");
+                        Console.WriteLine("6. Salvați starea");
+                        Console.WriteLine("7. Log Out");
+                        Console.WriteLine("8. Ieșire");
 
-                        var Alg = Console.ReadLine();
+                        var choice = Console.ReadLine();
 
-                        switch (Alg)
+                        switch (choice)
                         {
                             case "1":
                                 ((Mechanic)authenticatedUser).PreiaCerere(autoService);
@@ -126,64 +137,11 @@ namespace AutoServiceApp
                                 exit = true;
                                 break;
                             default:
-                                Console.WriteLine("Optiune invalida. Incercati din nou!");
+                                Console.WriteLine("Opțiune invalidă. Vă rugăm să încercați din nou.");
                                 break;
                         }
                     }
                 }
-            }
-        }
-
-        static User LogIn(AutoService autoService)
-        {
-            Console.Write("Introduceti email: ");
-            var email = Console.ReadLine();
-            Console.Write("Introduceti parola: ");
-            var password = Console.ReadLine();
-
-            var user = autoService.Authenticate(email, password);
-            if (user != null)
-            {
-                Console.WriteLine("Autentificare reusita.");
-                return user;
-            }
-            else
-            {
-                Console.WriteLine("Autentificare nereusita.");
-                return null;
-            }
-        }
-
-        static void AddUser(AutoService autoService)
-        {
-            Console.Write("Introduceti rolul user-ului (admin/mecanic): ");
-            var role = Console.ReadLine().ToLower();
-            Console.Write("Introducere cod unic: ");
-            var code = Console.ReadLine();
-            Console.Write("Introduceti nume: ");
-            var firstName = Console.ReadLine();
-            Console.Write("Introduceti prenume: ");
-            var lastName = Console.ReadLine();
-            Console.Write("Introduceti email: ");
-            var email = Console.ReadLine();
-            Console.Write("Introduceti parola: ");
-            var password = Console.ReadLine();
-
-            if (role == "admin")
-            {
-                var admin = new Administrator(code, firstName, lastName, email, password);
-                autoService.AddUser(admin);
-                Console.WriteLine("Administrator adaugat cu succes.");
-            }
-            else if (role == "mecanic")
-            {
-                var mecanic = new Mechanic(code, firstName, lastName, email, password);
-                autoService.AddUser(mecanic);
-                Console.WriteLine("Mecanic adaugat cu succes.");
-            }
-            else
-            {
-                Console.WriteLine("Rol invalid. Nu a fost gasit user.");
             }
         }
     }
