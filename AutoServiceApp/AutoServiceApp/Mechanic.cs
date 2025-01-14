@@ -7,13 +7,12 @@ namespace AutoServiceApp
         [JsonConstructor]
         public Mechanic(string codUnic, string nume, string prenume, string email, string parola)
             : base(codUnic, nume, prenume, email, parola, UserRole.Mechanic){}
-       
 
         public void PreiaCerere(AutoService autoService)
         {
             if (currentRequest != null)
             {
-                Console.WriteLine("You already have an ongoing request.");
+                Console.WriteLine("Aveti deja o cerere in desfasurare.");
                 return;
             }
 
@@ -22,11 +21,11 @@ namespace AutoServiceApp
             {
                 currentRequest = cerere;
                 currentRequest.Status = RequestStatus.InPreluare;
-                Console.WriteLine("Request taken successfully.");
+                Console.WriteLine("Cerere preluata cu succes.");
             }
             else
             {
-                Console.WriteLine("No requests available.");
+                Console.WriteLine("Nu sunt cereri disponibile.");
             }
         }
 
@@ -34,21 +33,21 @@ namespace AutoServiceApp
         {
             if (currentRequest == null)
             {
-                Console.WriteLine("No ongoing request to investigate.");
+                Console.WriteLine("Nu exista nicio cerere in desfasurare de investigat.");
                 return;
             }
 
-            Console.WriteLine("Investigating the problem...");
-           
-            bool partsNeeded = true; 
+            Console.WriteLine("Investigam problema...");
+
+            bool partsNeeded = true;
 
             if (partsNeeded)
             {
-                Console.WriteLine("Parts are needed to resolve the issue.");
+                Console.WriteLine("Sunt necesare piese pentru a rezolva problema.");
             }
             else
             {
-                Console.WriteLine("No parts are needed to resolve the issue.");
+                Console.WriteLine("Nu sunt necesare piese pentru a rezolva problema.");
             }
         }
 
@@ -56,45 +55,45 @@ namespace AutoServiceApp
         {
             if (currentRequest == null)
             {
-                Console.WriteLine("No ongoing request to add parts order.");
+                Console.WriteLine("Nu exista nicio cerere in desfasurare pentru a adauga comanda de piese.");
                 return;
             }
 
-            Console.Write("Enter part order details: ");
+            Console.Write("Introduceti detaliile comenzii de piese: ");
             var detalii = Console.ReadLine();
 
             var comandaPiese = new CererePiese(autoService.GetPartOrders().Count + 1, utilizatorAutentificat.Nume, detalii, PartOrderStatus.InAsteptare);
             autoService.AddPartOrder(comandaPiese, utilizatorAutentificat);
-            Console.WriteLine("Part order added successfully.");
+            Console.WriteLine("Comanda de piese adaugata cu succes.");
         }
 
         public void RezolvaProblema(AutoService autoService)
         {
             if (currentRequest == null)
             {
-                Console.WriteLine("No ongoing request to resolve.");
+                Console.WriteLine("Nu exista nicio cerere in desfasurare de rezolvat.");
                 return;
             }
 
             var comandaPiese = autoService.GetPartOrders().FirstOrDefault(c => c.Avb == int.Parse(currentRequest.CodUnic) && c.Status == PartOrderStatus.InAsteptare);
             if (comandaPiese != null)
             {
-                Console.WriteLine("Waiting for parts to resolve the issue.");
+                Console.WriteLine("Asteptam piesele pentru a rezolva problema.");
                 return;
             }
 
             currentRequest.Status = RequestStatus.Finalizat;
-            Console.WriteLine($"Request resolved by {Nume}.");
+            Console.WriteLine($"Cerere rezolvata de {Nume}.");
             currentRequest = null;
         }
 
         public override void AdaugaCerere(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.Write("Enter request details: ");
+            Console.Write("Introduceti detaliile cererii: ");
             var detalii = Console.ReadLine();
             var cerere = new CerereRezolvare((autoService.GetCereri().Count + 1).ToString(), utilizatorAutentificat.Nume, "NumarMasina", detalii, RequestStatus.InPreluare);
             autoService.AddRequest(cerere, utilizatorAutentificat);
-            Console.WriteLine("Request added successfully.");
+            Console.WriteLine("Cerere adaugata cu succes.");
         }
 
         public override void VizualizeazaCereri(AutoService autoService, User utilizatorAutentificat)
@@ -102,7 +101,7 @@ namespace AutoServiceApp
             var cereri = autoService.GetCereri();
             foreach (var cerere in cereri)
             {
-                Console.WriteLine($"Request ID: {cerere.CodUnic}, Status: {cerere.Status}, Client: {cerere.NumeClient}");
+                Console.WriteLine($"ID Cerere: {cerere.CodUnic}, Status: {cerere.Status}, Client: {cerere.NumeClient}");
             }
         }
 
@@ -111,56 +110,56 @@ namespace AutoServiceApp
             var comenziPiese = autoService.GetPartOrders();
             foreach (var comanda in comenziPiese)
             {
-                Console.WriteLine($"Order ID: {comanda.Avb}, Status: {comanda.Status}, Mechanic: {comanda.NumeMecanic}");
+                Console.WriteLine($"ID Comanda: {comanda.Avb}, Status: {comanda.Status}, Mecanic: {comanda.NumeMecanic}");
             }
         }
 
         public override void FinalizeazaComandaPiese(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.Write("Enter part order ID to finalize: ");
+            Console.Write("Introduceti ID-ul comenzii de piese pentru a finaliza: ");
             var avb = int.Parse(Console.ReadLine());
 
             var comandaPiese = autoService.GetPartOrders().FirstOrDefault(c => c.Avb == avb);
             if (comandaPiese != null)
             {
                 comandaPiese.Status = PartOrderStatus.Finalizat;
-                Console.WriteLine("Part order finalized successfully.");
+                Console.WriteLine("Comanda de piese finalizata cu succes.");
             }
             else
             {
-                Console.WriteLine("Part order not found.");
+                Console.WriteLine("Comanda de piese nu a fost gasita.");
             }
         }
-        
+
         public override void LogIn(AutoService autoService)
         {
             var user = autoService.Authenticate(this.Email, this.Parola);
             if (user != null)
             {
-                Console.WriteLine("Authentication successful.");
+                Console.WriteLine("Autentificare realizata cu succes.");
             }
             else
             {
-                Console.WriteLine("Authentication failed.");
+                Console.WriteLine("Autentificare nereusita.");
             }
         }
 
         public override void AddUser(AutoService autoService)
         {
-            Console.Write("Introduceți codul unic: ");
+            Console.Write("Introduceti codul unic: ");
             var code = Console.ReadLine();
-            Console.Write("Introduceți prenumele: ");
+            Console.Write("Introduceti prenumele: ");
             var firstName = Console.ReadLine();
-            Console.Write("Introduceți numele de familie: ");
+            Console.Write("Introduceti numele de familie: ");
             var lastName = Console.ReadLine();
-            Console.Write("Introduceți emailul: ");
+            Console.Write("Introduceti emailul: ");
             var email = Console.ReadLine();
-            Console.Write("Introduceți parola: ");
+            Console.Write("Introduceti parola: ");
             var password = Console.ReadLine();
 
             var mechanic = new Mechanic(code, firstName, lastName, email, password);
             autoService.AddUser(mechanic);
-            Console.WriteLine("Mecanic adăugat cu succes.");
+            Console.WriteLine("Mecanic adaugat cu succes.");
         }
     }
 }

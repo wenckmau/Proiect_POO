@@ -46,7 +46,7 @@ namespace AutoServiceApp
                         case "Mechanic":
                             return JsonSerializer.Deserialize<Mechanic>(root.GetRawText(), options);
                         default:
-                            throw new NotSupportedException($"Role '{role}' is not supported");
+                            throw new NotSupportedException($"Rol '{role}' nu exista.");
                     }
                 }
             }

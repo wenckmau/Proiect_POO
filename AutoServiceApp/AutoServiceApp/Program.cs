@@ -19,37 +19,42 @@ namespace AutoServiceApp
             {
                 if (authenticatedUser == null)
                 {
-                    Console.WriteLine("\nSelectați o opțiune:");
+                    Console.WriteLine("\nSelectati o optiune:");
                     Console.WriteLine("1. Login In");
-                    Console.WriteLine("2. Adăugați utilizator");
-                    Console.WriteLine("3. Ieșire");
+                    Console.WriteLine("2. Adaugati utilizator");
+                    Console.WriteLine("3. Iesire");
 
                     var choice = Console.ReadLine();
 
                     switch (choice)
                     {
                         case "1":
-                            Console.Write("Introduceți Email: ");
+                            Console.Write("Introduceti Email: ");
                             var email = Console.ReadLine();
-                            Console.Write("Introduceți Parola: ");
+                            Console.Write("Introduceti Parola: ");
                             var password = Console.ReadLine();
                             authenticatedUser = autoService.Authenticate(email, password);
                             if (authenticatedUser == null)
                             {
-                                Console.WriteLine("Autentificarea a eșuat");
+                                Console.WriteLine("Autentificarea a esuat");
                             }
                             break;
                         case "2":
-                            Console.Write("Introduceți rol (admin/mecanic): ");
+                            Console.Write("Introduceti rol (admin/mecanic): ");
                             var role = Console.ReadLine().ToLower();
-                            User user = role == "admin" ? new Administrator("code", "firstName", "lastName", "email", "password") : (User)new Mechanic("code", "firstName", "lastName", "email", "password");
+                            User user = role switch
+                            {
+                                "admin" => new Administrator("code", "firstName", "lastName", "email", "password"),
+                                "mecanic" => new Mechanic("code", "firstName", "lastName", "email", "password"),
+                                _ => null
+                            };
                             user.AddUser(autoService);
                             break;
                         case "3":
                             exit = true;
                             break;
                         default:
-                            Console.WriteLine("Opțiune invalidă.");
+                            Console.WriteLine("Optiune invalida.");
                             break;
                     }
                 }
@@ -57,14 +62,14 @@ namespace AutoServiceApp
                 {
                     if (authenticatedUser is Administrator)
                     {
-                        Console.WriteLine("\nSelectați o opțiune:");
-                        Console.WriteLine("1. Adăugați o nouă cerere");
-                        Console.WriteLine("2. Vizualizați toate cererile");
-                        Console.WriteLine("3. Vizualizați toate comenzile de piese");
-                        Console.WriteLine("4. Finalizați o comandă de piese");
-                        Console.WriteLine("5. Salvați starea");
+                        Console.WriteLine("\nSelectati o optiune:");
+                        Console.WriteLine("1. Adaugati o noua cerere");
+                        Console.WriteLine("2. Vizualizati toate cererile");
+                        Console.WriteLine("3. Vizualizati toate comenzile de piese");
+                        Console.WriteLine("4. Finalizati o comanda de piese");
+                        Console.WriteLine("5. Salvati starea");
                         Console.WriteLine("6. Log Out");
-                        Console.WriteLine("7. Ieșire");
+                        Console.WriteLine("7. Iesire");
 
                         var choice = Console.ReadLine();
 
@@ -92,21 +97,21 @@ namespace AutoServiceApp
                                 exit = true;
                                 break;
                             default:
-                                Console.WriteLine("Opțiune invalidă. Vă rugăm să încercați din nou.");
+                                Console.WriteLine("Optiune invalida. Va rugam sa incercati din nou.");
                                 break;
                         }
                     }
                     else if (authenticatedUser is Mechanic)
                     {
-                        Console.WriteLine("\nSelectați o opțiune:");
-                        Console.WriteLine("1. Preluați următoarea cerere");
-                        Console.WriteLine("2. Investigați problema");
-                        Console.WriteLine("3. Adăugați o comandă de piese");
-                        Console.WriteLine("4. Rezolvați problema");
-                        Console.WriteLine("5. Vizualizați toate comenzile de piese");
-                        Console.WriteLine("6. Salvați starea");
+                        Console.WriteLine("\nSelectati o optiune:");
+                        Console.WriteLine("1. Preluati urmatoarea cerere");
+                        Console.WriteLine("2. Investigati problema");
+                        Console.WriteLine("3. Adaugati o comanda de piese");
+                        Console.WriteLine("4. Rezolvati problema");
+                        Console.WriteLine("5. Vizualizati toate comenzile de piese");
+                        Console.WriteLine("6. Salvati starea");
                         Console.WriteLine("7. Log Out");
-                        Console.WriteLine("8. Ieșire");
+                        Console.WriteLine("8. Iesire");
 
                         var choice = Console.ReadLine();
 
@@ -137,7 +142,7 @@ namespace AutoServiceApp
                                 exit = true;
                                 break;
                             default:
-                                Console.WriteLine("Opțiune invalidă. Vă rugăm să încercați din nou.");
+                                Console.WriteLine("Optiune invalida. Va rugam sa incercati din nou.");
                                 break;
                         }
                     }
@@ -146,3 +151,5 @@ namespace AutoServiceApp
         }
     }
 }
+
+

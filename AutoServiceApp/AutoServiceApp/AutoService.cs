@@ -55,7 +55,7 @@ namespace AutoServiceApp
             }
             else
             {
-                throw new UnauthorizedAccessException("Only mechanics can add part orders.");
+                throw new UnauthorizedAccessException("Doar mecanicii pot plasa comezni.");
             }
         }
 
@@ -67,7 +67,7 @@ namespace AutoServiceApp
             }
             else
             {
-                throw new UnauthorizedAccessException("Only administrators can view part orders.");
+                throw new UnauthorizedAccessException("Doar administratorul poate cedea comenzile.");
             }
         }
 
@@ -84,7 +84,7 @@ namespace AutoServiceApp
             }
             else
             {
-                throw new UnauthorizedAccessException("Only administrators can view requests.");
+                throw new UnauthorizedAccessException("Doar administratorul poate vedea cererile.");
             }
         }
 

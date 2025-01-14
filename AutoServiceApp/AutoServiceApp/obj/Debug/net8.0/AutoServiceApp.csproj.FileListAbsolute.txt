@@ -13,3 +13,18 @@ C:\Users\mikyb\Desktop\New folder (3)\AutoServiceApp\AutoServiceApp\obj\Debug\ne
 C:\Users\mikyb\Desktop\New folder (3)\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.pdb
 C:\Users\mikyb\Desktop\New folder (3)\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.genruntimeconfig.cache
 C:\Users\mikyb\Desktop\New folder (3)\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\ref\AutoServiceApp.dll
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\bin\Debug\net8.0\AutoServiceApp.exe
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\bin\Debug\net8.0\AutoServiceApp.deps.json
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\bin\Debug\net8.0\AutoServiceApp.runtimeconfig.json
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\bin\Debug\net8.0\AutoServiceApp.dll
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\bin\Debug\net8.0\AutoServiceApp.pdb
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.AssemblyInfoInputs.cache
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.AssemblyInfo.cs
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.csproj.CoreCompileInputs.cache
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.sourcelink.json
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.dll
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\refint\AutoServiceApp.dll
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.pdb
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\AutoServiceApp.genruntimeconfig.cache
+C:\Users\40729\Desktop\Proiect_POO\AutoServiceApp\AutoServiceApp\obj\Debug\net8.0\ref\AutoServiceApp.dll

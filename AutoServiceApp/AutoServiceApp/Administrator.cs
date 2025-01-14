@@ -5,19 +5,19 @@
         public Administrator(string codUnic, string nume, string prenume, string email, string parola)
             : base(codUnic, nume, prenume, email, parola, UserRole.Admin) { }
 
-     public override void AdaugaCerere(AutoService autoService, User utilizatorAutentificat)
+        public override void AdaugaCerere(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.Write("Introduceți numele clientului: ");
+            Console.Write("Introduceti numele clientului: ");
             var numeClient = Console.ReadLine();
-            Console.Write("Introduceți numărul mașinii: ");
+            Console.Write("Introduceti numarul masinii: ");
             var numarMasina = Console.ReadLine();
-            Console.Write("Introduceți descrierea problemei: ");
+            Console.Write("Introduceti descrierea problemei: ");
             var descriereProblema = Console.ReadLine();
 
             var cerere = new CerereRezolvare(Guid.NewGuid().ToString(), numeClient, numarMasina, descriereProblema, RequestStatus.InPreluare);
 
             autoService.AddRequest(cerere, utilizatorAutentificat);
-            Console.WriteLine("Cerere adăugată cu succes.");
+            Console.WriteLine("Cerere adaugata cu succes.");
         }
 
         public override void VizualizeazaCereri(AutoService autoService, User utilizatorAutentificat)
@@ -31,7 +31,7 @@
 
         public override void AdaugaComandaPiese(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.WriteLine("Doar mecanicii pot adăuga comenzi de piese.");
+            Console.WriteLine("Doar mecanicii pot adauga comenzi de piese.");
         }
 
         public override void VizualizeazaComenziPiese(AutoService autoService, User utilizatorAutentificat)
@@ -45,32 +45,34 @@
 
         public override void FinalizeazaComandaPiese(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.Write("Introduceți ID-ul comenzii de piese: ");
+            Console.Write("Introduceti ID-ul comenzii de piese: ");
             var idComandaPiese = int.Parse(Console.ReadLine());
 
             var comanda = autoService.GetPartOrders().FirstOrDefault(c => c.Avb == idComandaPiese);
             if (comanda != null)
             {
                 comanda.Status = PartOrderStatus.Finalizat;
-                Console.WriteLine("Comanda de piese finalizată cu succes.");
+                Console.WriteLine("Comanda de piese finalizata cu succes.");
             }
             else
             {
-                Console.WriteLine("Comanda de piese nu a fost găsită.");
+                Console.WriteLine("Comanda de piese nu a fost gasita.");
             }
         }
+
         public override void LogIn(AutoService autoService)
         {
             var user = autoService.Authenticate(this.Email, this.Parola);
             if (user != null)
             {
-                Console.WriteLine("Authentication successful.");
+                Console.WriteLine("Autentificare realizata cu succes.");
             }
             else
             {
-                Console.WriteLine("Authentication failed.");
+                Console.WriteLine("Autentificare nereusita.");
             }
         }
+
         public override void AddUser(AutoService autoService)
         {
             Console.Write("Introduceti codul unic: ");
@@ -86,8 +88,7 @@
 
             var admin = new Administrator(code, firstName, lastName, email, password);
             autoService.AddUser(admin);
-            Console.WriteLine("Administrator adăugat cu succes.");
+            Console.WriteLine("Administrator adaugat cu succes.");
         }
-        
     }
 }
