@@ -73,7 +73,14 @@ namespace AutoServiceApp
 
         public void AddRequest(CerereRezolvare request, User user)
         {
-           
+            if (user is Administrator)
+            {
+                Cereri.Add(request);
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Only administrators can add requests.");
+            }
         }
 
         public List<CerereRezolvare> GetRequests(User user)
@@ -90,7 +97,22 @@ namespace AutoServiceApp
 
         public void FinalizePartOrder(int partOrderId, User user)
         {
-           
+            if (user is Administrator)
+            {
+                var partOrder = PartOrders.FirstOrDefault(po => po.Avb == partOrderId);
+                if (partOrder != null)
+                {
+                    partOrder.Status = PartOrderStatus.Finalizat;
+                }
+                else
+                {
+                    throw new KeyNotFoundException("Comanda nu a fost gasita");
+                }
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Doar administratorul poate finaliza comenzi");
+            }
         }
 
         public List<CerereRezolvare> GetCereri()

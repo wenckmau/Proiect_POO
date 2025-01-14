@@ -15,6 +15,14 @@
       "Email": "test2",
       "Parola": "test2",
       "Role": "Mechanic"
+    },
+    {
+      "CodUnic": "13",
+      "Nume": "123",
+      "Prenume": "123",
+      "Email": "123",
+      "Parola": "123",
+      "Role": "Admin"
     }
   ],
   "Cereri": [],

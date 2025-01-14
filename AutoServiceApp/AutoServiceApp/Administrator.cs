@@ -5,19 +5,34 @@
         public Administrator(string codUnic, string nume, string prenume, string email, string parola)
             : base(codUnic, nume, prenume, email, parola, UserRole.Admin) { }
 
-        public override void AdaugaCerere(AutoService autoService, User utilizatorAutentificat)
+     public override void AdaugaCerere(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.Write("Introduceti numele clientului: ");
+            Console.Write("Introduceți numele clientului: ");
             var numeClient = Console.ReadLine();
-            Console.Write("Introduceti numarul masinii: ");
+            Console.Write("Introduceți numărul mașinii: ");
             var numarMasina = Console.ReadLine();
-            Console.Write("Introduceti descrierea problemei: ");
+            
+            bool isValid = (numarMasina.StartsWith("B") && (numarMasina.Length == 6 || numarMasina.Length == 7) && 
+                            char.IsDigit(numarMasina[1]) && char.IsDigit(numarMasina[2]) && 
+                            char.IsLetter(numarMasina[3]) && char.IsLetter(numarMasina[4]) && char.IsLetter(numarMasina[5])) ||
+                           ((numarMasina.Length == 7 || numarMasina.Length == 8) && 
+                            char.IsLetter(numarMasina[0]) && char.IsLetter(numarMasina[1]) && 
+                            char.IsDigit(numarMasina[2]) && char.IsDigit(numarMasina[3]) && 
+                            char.IsLetter(numarMasina[4]) && char.IsLetter(numarMasina[5]) && char.IsLetter(numarMasina[6]));
+
+            if (!isValid)
+            {
+                Console.WriteLine("Numărul de înmatriculare nu este valid.");
+                return;
+            }
+            Console.Write("Introduceți descrierea problemei: ");
             var descriereProblema = Console.ReadLine();
+            
 
             var cerere = new CerereRezolvare(Guid.NewGuid().ToString(), numeClient, numarMasina, descriereProblema, RequestStatus.InPreluare);
 
             autoService.AddRequest(cerere, utilizatorAutentificat);
-            Console.WriteLine("Cerere adaugata cu succes.");
+            Console.WriteLine("Cerere adăugată cu succes.");
         }
 
         public override void VizualizeazaCereri(AutoService autoService, User utilizatorAutentificat)
@@ -31,7 +46,7 @@
 
         public override void AdaugaComandaPiese(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.WriteLine("Doar mecanicii pot adauga comenzi de piese.");
+            Console.WriteLine("Doar mecanicii pot adăuga comenzi de piese.");
         }
 
         public override void VizualizeazaComenziPiese(AutoService autoService, User utilizatorAutentificat)
@@ -45,21 +60,20 @@
 
         public override void FinalizeazaComandaPiese(AutoService autoService, User utilizatorAutentificat)
         {
-            Console.Write("Introduceti ID-ul comenzii de piese: ");
+            Console.Write("Introduceți ID-ul comenzii de piese: ");
             var idComandaPiese = int.Parse(Console.ReadLine());
 
             var comanda = autoService.GetPartOrders().FirstOrDefault(c => c.Avb == idComandaPiese);
             if (comanda != null)
             {
                 comanda.Status = PartOrderStatus.Finalizat;
-                Console.WriteLine("Comanda de piese finalizata cu succes.");
+                Console.WriteLine("Comanda de piese finalizată cu succes.");
             }
             else
             {
-                Console.WriteLine("Comanda de piese nu a fost gasita.");
+                Console.WriteLine("Comanda de piese nu a fost găsită.");
             }
         }
-
         public override void LogIn(AutoService autoService)
         {
             var user = autoService.Authenticate(this.Email, this.Parola);
@@ -72,7 +86,6 @@
                 Console.WriteLine("Autentificare nereusita.");
             }
         }
-
         public override void AddUser(AutoService autoService)
         {
             Console.Write("Introduceti codul unic: ");
@@ -88,7 +101,8 @@
 
             var admin = new Administrator(code, firstName, lastName, email, password);
             autoService.AddUser(admin);
-            Console.WriteLine("Administrator adaugat cu succes.");
+            Console.WriteLine("Administrator adăugat cu succes.");
         }
+        
     }
 }
