@@ -37,19 +37,21 @@ namespace AutoServiceApp
                 return;
             }
 
-            Console.WriteLine("Investigam problema...");
+            Console.WriteLine("Investigati problema si decideti daca este necesara o comanda de piese (da/nu): ");
+            var necesitaPiese = Console.ReadLine().ToLower();
 
-            bool partsNeeded = true;
-
-            if (partsNeeded)
+            if (necesitaPiese == "da")
             {
-                Console.WriteLine("Sunt necesare piese pentru a rezolva problema.");
+                currentRequest.NecesitaPiese = true;
+                Console.WriteLine("Problema necesita piese auto pentru a fi rezolvata.");
             }
             else
             {
-                Console.WriteLine("Nu sunt necesare piese pentru a rezolva problema.");
+                currentRequest.NecesitaPiese = false;
+                Console.WriteLine("Problema poate fi rezolvata fara piese auto.");
             }
         }
+
 
         public override void AdaugaComandaPiese(AutoService autoService, User utilizatorAutentificat)
         {
@@ -62,7 +64,7 @@ namespace AutoServiceApp
             Console.Write("Introduceti detaliile comenzii de piese: ");
             var detalii = Console.ReadLine();
 
-            var comandaPiese = new CererePiese(autoService.GetPartOrders().Count + 1, utilizatorAutentificat.Nume, detalii, PartOrderStatus.InAsteptare);
+            var comandaPiese = new CererePiese(int.Parse(currentRequest.CodUnic), utilizatorAutentificat.Nume, detalii, PartOrderStatus.InAsteptare);
             autoService.AddPartOrder(comandaPiese, utilizatorAutentificat);
             Console.WriteLine("Comanda de piese adaugata cu succes.");
         }
@@ -75,18 +77,20 @@ namespace AutoServiceApp
                 return;
             }
 
-            var comandaPiese = autoService.GetPartOrders().FirstOrDefault(c => c.Avb == int.Parse(currentRequest.CodUnic) && c.Status == PartOrderStatus.InAsteptare);
-            if (comandaPiese != null)
+            if (currentRequest.NecesitaPiese)
             {
-                Console.WriteLine("Asteptam piesele pentru a rezolva problema.");
-                return;
+                var comandaPiese = autoService.GetPartOrders().FirstOrDefault(c => c.Avb == int.Parse(currentRequest.CodUnic) && c.Status == PartOrderStatus.InAsteptare);
+                
+                    Console.WriteLine("Asteptam piesele pentru a rezolva problema.");
+                    return;
+                
             }
 
             currentRequest.Status = RequestStatus.Finalizat;
+            currentRequest.RezolvatDe = this.Nume;
             Console.WriteLine($"Cerere rezolvata de {Nume}.");
             currentRequest = null;
         }
-
         public override void AdaugaCerere(AutoService autoService, User utilizatorAutentificat)
         {
             Console.Write("Introduceti detaliile cererii: ");
@@ -99,6 +103,11 @@ namespace AutoServiceApp
         public override void VizualizeazaCereri(AutoService autoService, User utilizatorAutentificat)
         {
             var cereri = autoService.GetCereri();
+            if (cereri == null || cereri.Count == 0)
+            {
+                Console.WriteLine("Nu exista cereri de vizualizat.");
+                return;
+            }
             foreach (var cerere in cereri)
             {
                 Console.WriteLine($"ID Cerere: {cerere.CodUnic}, Status: {cerere.Status}, Client: {cerere.NumeClient}");
@@ -107,7 +116,13 @@ namespace AutoServiceApp
 
         public override void VizualizeazaComenziPiese(AutoService autoService, User utilizatorAutentificat)
         {
+            
             var comenziPiese = autoService.GetPartOrders();
+            if (comenziPiese == null || comenziPiese.Count == 0)
+            {
+                Console.WriteLine("Nu exista cereri de vizualizat.");
+                return;
+            }
             foreach (var comanda in comenziPiese)
             {
                 Console.WriteLine($"ID Comanda: {comanda.Avb}, Status: {comanda.Status}, Mecanic: {comanda.NumeMecanic}");

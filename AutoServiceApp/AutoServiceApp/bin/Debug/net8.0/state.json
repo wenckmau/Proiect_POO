@@ -23,8 +23,26 @@
       "Email": "123",
       "Parola": "123",
       "Role": "Admin"
+    },
+    {
+      "CodUnic": "2",
+      "Nume": "Prodna",
+      "Prenume": "Cristi",
+      "Email": "Pro",
+      "Parola": "Dan",
+      "Role": "Mechanic"
     }
   ],
-  "Cereri": [],
+  "Cereri": [
+    {
+      "CodUnic": "4676",
+      "NumeClient": "Luci",
+      "NumarMasina": "HD29JUR",
+      "DescriereProblema": "BYEBYE",
+      "Status": "InPreluare",
+      "NecesitaPiese": false,
+      "RezolvatDe": ""
+    }
+  ],
   "PartOrders": []
 }
