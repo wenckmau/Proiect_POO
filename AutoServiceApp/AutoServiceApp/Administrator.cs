@@ -87,7 +87,7 @@
                 if (cerere != null)
                 {
                     cerere.NecesitaPiese = false;
-                    Console.WriteLine("Statusul cererii a fost modificat la 'nu necesita piese'.");
+   
                 }
                 else
                 {

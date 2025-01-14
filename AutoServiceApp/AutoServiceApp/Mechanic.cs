@@ -61,6 +61,12 @@ namespace AutoServiceApp
                 return;
             }
 
+            if (!currentRequest.NecesitaPiese)
+            {
+                Console.WriteLine("Problema nu necesita piese");
+                return;
+            }
+
             Console.Write("Introduceti detaliile comenzii de piese: ");
             var detalii = Console.ReadLine();
 
